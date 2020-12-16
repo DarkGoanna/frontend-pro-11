@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hw-11</title>
+</head>
+
+<body>
+    <script>
+        function myBind(func, obj) {
+            if (typeof func === 'function') {
+                let ownerObj;
+                (typeof obj === 'object') ? ownerObj = Object.assign(obj): ownerObj = Object(obj);
+                ownerObj.key = func;
+                return function () {
+                    return ownerObj.key();
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>
