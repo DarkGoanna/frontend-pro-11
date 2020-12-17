@@ -9,13 +9,10 @@
 
 <body>
     <script>
-        function myBind(func, obj) {
+        function myBind(func, obj, ...arg1) {
             if (typeof func === 'function') {
-                let ownerObj;
-                (typeof obj === 'object') ? ownerObj = Object.assign(obj): ownerObj = Object(obj);
-                ownerObj.key = func;
-                return function () {
-                    return ownerObj.key();
+                return function (...arg2) {
+                    return func.apply(obj, [...arg1, ...arg2]);
                 }
             }
         };
